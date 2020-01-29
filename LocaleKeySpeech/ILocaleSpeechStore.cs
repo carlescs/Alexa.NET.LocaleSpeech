@@ -7,6 +7,6 @@ namespace Alexa.NET.LocaleSpeech
     {
         bool Supports(string locale);
 
-        Task<IOutputSpeech> Get(string locale, string key, object[] parameters);
+        Task<IOutputSpeech> Get(string locale, string key, params object[] parameters);
     }
 }
