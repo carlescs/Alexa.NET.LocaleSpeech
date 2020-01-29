@@ -34,6 +34,21 @@ namespace LocaleSpeech.Tests
         }
 
         [Fact]
+        public async Task KeyWithEmptyParamsGeneratesSpeech()
+        {
+            var testText = "yes - a test";
+            var store = new DictionaryLocaleSpeechStore();
+            store.AddLanguage("fr", new Dictionary<string, object>
+            {
+                {"test",testText }
+            });
+
+            var result = await store.Get("fr", "test");
+            Assert.IsType<PlainTextOutputSpeech>(result);
+            Assert.Equal(testText, ((PlainTextOutputSpeech)result).Text);
+        }
+
+        [Fact]
         public async Task KeyWithParamsGeneratesSpeech()
         {
             var testText = "yes - a {0} test";

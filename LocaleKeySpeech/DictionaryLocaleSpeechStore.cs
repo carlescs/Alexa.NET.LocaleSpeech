@@ -18,7 +18,7 @@ namespace Alexa.NET.LocaleSpeech
             return Languages.ContainsKey(locale.ToLower());
         }
 
-        public Task<IOutputSpeech> Get(string locale, string key, object[] parameters)
+        public Task<IOutputSpeech> Get(string locale, string key, params object[] parameters)
         {
             var value = Languages[locale.ToLower()][key];
             return Task.FromResult(ObjectToSpeech.Generate(value,parameters));
